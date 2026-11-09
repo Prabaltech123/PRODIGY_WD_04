@@ -1,0 +1,686 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prabal Hazra | Developer Portfolio</title>
+<meta name="description" content="Personal portfolio of Prabal Hazra, a CSE AIML student and aspiring developer.">
+<style>
+:root {
+  --bg: #080b16;
+  --panel: #111629;
+  --text: #f4f5ff;
+  --muted: #a3abc4;
+  --accent: #8b7cff;
+  --cyan: #63d9ff;
+  --border: rgba(255,255,255,.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 15% 0%, #29205a 0, transparent 34%),
+    radial-gradient(ellipse at 95% 45%, #102b49 0, transparent 32%),
+    var(--bg);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(8,11,22,.88);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  min-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+
+.brand span {
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--muted);
+  font-size: 14px;
+  transition: color .2s;
+}
+
+.nav-links a:hover {
+  color: var(--cyan);
+}
+
+.hero {
+  min-height: 570px;
+  display: grid;
+  grid-template-columns: 1.4fr .8fr;
+  align-items: center;
+  gap: 50px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.eyebrow {
+  display: inline-block;
+  border: 1px solid #8b7cff66;
+  background: #8b7cff15;
+  color: #c5bdff;
+  padding: 7px 14px;
+  border-radius: 30px;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 22px 0 15px;
+  font-size: clamp(38px, 6vw, 67px);
+  line-height: 1.12;
+  letter-spacing: -2px;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--accent), var(--cyan));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 560px;
+  font-size: 16px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 13px;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 11px;
+  font-weight: 700;
+  font-size: 14px;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  background: linear-gradient(100deg, #8b7cff, #5aabff);
+  color: #080b16;
+  box-shadow: 0 8px 30px #7565ff30;
+}
+
+.btn-outline {
+  border: 1px solid var(--border);
+  background: #ffffff08;
+}
+
+.profile-card {
+  position: relative;
+  padding: 28px;
+  text-align: center;
+  background: linear-gradient(145deg, #ffffff12, #ffffff04);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  box-shadow: 0 25px 70px #00000035;
+}
+
+.avatar {
+  width: 140px;
+  height: 140px;
+  margin: 5px auto 20px;
+  display: grid;
+  place-items: center;
+  border-radius: 35px;
+  transform: rotate(-5deg);
+  background: linear-gradient(135deg, #8b7cff, #63d9ff);
+  color: #101328;
+  font-size: 46px;
+  font-weight: 900;
+  box-shadow: 0 10px 45px #8b7cff40;
+}
+
+.profile-card h2 {
+  font-size: 23px;
+}
+
+.profile-card p {
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.status {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 7px 12px;
+  border-radius: 20px;
+  background: #48df9b15;
+  color: #7ff0bd;
+  font-size: 12px;
+}
+
+section.content-section {
+  padding: 75px 0;
+  scroll-margin-top: 70px;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 38px;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 12px;
+}
+
+.section-heading h2 {
+  font-size: clamp(28px, 4vw, 40px);
+  letter-spacing: -1px;
+}
+
+.section-heading p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+.about-box {
+  padding: 30px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: #ffffff07;
+}
+
+.about-box p {
+  color: var(--muted);
+  margin-bottom: 15px;
+}
+
+.about-box p:last-child {
+  margin-bottom: 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+.skill-card, .project-card {
+  padding: 24px;
+  background: linear-gradient(145deg, #ffffff0d, #ffffff04);
+  border: 1px solid var(--border);
+  border-radius: 19px;
+  transition: transform .25s, border-color .25s;
+}
+
+.skill-card:hover, .project-card:hover {
+  transform: translateY(-5px);
+  border-color: #8b7cff99;
+}
+
+.skill-icon {
+  font-size: 29px;
+}
+
+.skill-card h3 {
+  margin: 12px 0 8px;
+  font-size: 18px;
+}
+
+.skill-card p {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.project-number {
+  display: inline-block;
+  color: var(--cyan);
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.project-card h3 {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+.project-card p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.tags span {
+  font-size: 11px;
+  padding: 5px 10px;
+  border: 1px solid #8b7cff40;
+  background: #8b7cff12;
+  color: #d2ccff;
+  border-radius: 20px;
+}
+
+.project-link {
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.education {
+  padding: 25px;
+  border-left: 3px solid var(--accent);
+  background: #ffffff07;
+  border-radius: 0 15px 15px 0;
+}
+
+.education h3 {
+  font-size: 21px;
+}
+
+.education p {
+  color: var(--muted);
+  margin-top: 5px;
+}
+
+.contact-box {
+  padding: 38px 25px;
+  text-align: center;
+  background: linear-gradient(130deg, #8b7cff18, #63d9ff0b);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+}
+
+.contact-box h2 {
+  font-size: clamp(26px, 4vw, 38px);
+}
+
+.contact-box p {
+  color: var(--muted);
+  margin: 12px auto 22px;
+  max-width: 500px;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 25px 0;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.reveal {
+  animation: fadeUp .8s ease both;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 760px) {
+  .nav-inner {
+    padding: 15px 0;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-top: 55px;
+  }
+
+  .profile-card {
+    max-width: 390px;
+    width: 100%;
+    margin: auto;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .nav-links {
+    gap: 11px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+  }
+
+  .skills-grid, .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  section.content-section {
+    padding: 55px 0;
+  }
+
+  .about-box {
+    padding: 22px;
+  }
+
+  .hero h1 {
+    letter-spacing: -1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#home" class="brand">Prabal<span>.dev</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="container hero" id="home">
+  <div class="reveal">
+    <span class="eyebrow">CSE • Artificial Intelligence & ML</span>
+
+    <h1>
+      Hi, I'm Prabal.<br>
+      <span class="gradient-text">Aspiring Developer.</span>
+    </h1>
+
+    <p>
+      I'm a Computer Science student who enjoys coding, building
+      useful web applications, and learning new technologies.
+      I'm currently developing my skills in software development
+      and artificial intelligence.
+    </p>
+
+    <div class="buttons">
+      <a href="#projects" class="btn btn-primary">Explore My Work ↗</a>
+      <a href="#contact" class="btn btn-outline">Contact Me</a>
+    </div>
+  </div>
+
+  <div class="profile-card reveal">
+    <div class="avatar">PH</div>
+    <h2>Prabal Hazra</h2>
+    <p>Aspiring Software & Web Developer</p>
+    <p>Learning today. Building for tomorrow.</p>
+    <span class="status">● Open to learning opportunities</span>
+  </div>
+</header>
+
+<section class="content-section" id="about">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">A little about me</span>
+      <h2>About <span class="gradient-text">Me</span></h2>
+      <p>My background, interests and goals.</p>
+    </div>
+
+    <div class="about-box">
+      <p>
+        Hello! I'm Prabal Hazra, a B.Tech student in Computer Science
+        and Engineering with a specialization in Artificial Intelligence
+        and Machine Learning at Brainware University.
+      </p>
+      <p>
+        I enjoy solving programming problems and turning ideas into
+        simple, useful applications. I have worked on small projects
+        such as a stopwatch and a weather application using web
+        technologies.
+      </p>
+      <p>
+        My current goal is to strengthen my programming fundamentals,
+        gain practical experience, and build projects that demonstrate
+        my skills. I believe consistent learning and hands-on practice
+        are important for becoming a good developer.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="skills">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">What I'm learning</span>
+      <h2>My <span class="gradient-text">Skills</span></h2>
+      <p>Technologies and tools I'm developing experience with.</p>
+    </div>
+
+    <div class="skills-grid">
+      <article class="skill-card">
+        <div class="skill-icon">🌐</div>
+        <h3>Web Development</h3>
+        <p>HTML, CSS and JavaScript for creating responsive web pages.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-icon">🐍</div>
+        <h3>Python</h3>
+        <p>Learning programming logic, problem solving and core concepts.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-icon">💻</div>
+        <h3>C Programming</h3>
+        <p>Practising fundamentals, arrays, functions and data structures.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-icon">🤖</div>
+        <h3>AI & Machine Learning</h3>
+        <p>Building foundational knowledge of AI and machine learning.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-icon">🗄️</div>
+        <h3>Database Concepts</h3>
+        <p>Learning how data is organized, stored and retrieved.</p>
+      </article>
+
+      <article class="skill-card">
+        <div class="skill-icon">🛠️</div>
+        <h3>Developer Tools</h3>
+        <p>Practising with VS Code, Git and GitHub for project development.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="projects">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">Things I've built</span>
+      <h2>Featured <span class="gradient-text">Projects</span></h2>
+      <p>A selection of my learning projects.</p>
+    </div>
+
+    <div class="projects-grid">
+      <article class="project-card">
+        <span class="project-number">PROJECT 01</span>
+        <h3>⏱️ Stopwatch App</h3>
+        <p>
+          A simple stopwatch application with interactive controls
+          for starting, stopping and resetting the timer.
+        </p>
+        <div class="tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+        <a class="project-link"
+           href="https://github.com/Prabaltech123"
+           target="_blank" rel="noopener noreferrer">
+          Explore GitHub ↗
+        </a>
+      </article>
+
+      <article class="project-card">
+        <span class="project-number">PROJECT 02</span>
+        <h3>🌦️ Weather App</h3>
+        <p>
+          A weather application that searches for a city and displays
+          current weather information using a weather API.
+        </p>
+        <div class="tags">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+          <span>API</span>
+        </div>
+        <a class="project-link"
+           href="https://github.com/Prabaltech123"
+           target="_blank" rel="noopener noreferrer">
+          Explore GitHub ↗
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="education">
+  <div class="container">
+    <div class="section-heading">
+      <span class="eyebrow">My academic journey</span>
+      <h2><span class="gradient-text">Education</span></h2>
+    </div>
+
+    <div class="education">
+      <h3>B.Tech — CSE (AI & ML)</h3>
+      <p>Brainware University</p>
+      <p>2024 – 2028 · Expected graduation: 2028</p>
+      <p>CGPA: 8.9 (as previously reported)</p>
+    </div>
+  </div>
+</section>
+
+<section class="content-section" id="contact">
+  <div class="container">
+    <div class="contact-box">
+      <span class="eyebrow">Let's connect</span>
+      <h2>Have an opportunity in mind?</h2>
+      <p>
+        I'm interested in connecting with developers, learning from
+        others, and exploring opportunities to improve my skills.
+      </p>
+
+      <div class="contact-links">
+        <a class="btn btn-primary"
+           href="https://www.linkedin.com/in/prabal-hazra-647703435/"
+           target="_blank" rel="noopener noreferrer">
+          LinkedIn ↗
+        </a>
+
+        <a class="btn btn-outline"
+           href="https://github.com/Prabaltech123"
+           target="_blank" rel="noopener noreferrer">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Prabal Hazra. Built with HTML, CSS & JavaScript.</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
